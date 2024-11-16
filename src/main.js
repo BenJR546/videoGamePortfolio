@@ -33,9 +33,12 @@ function create() {
     // Create and render the ground layer
     const groundLayer = map.createLayer("Tile Layer 1", tileset, 0, 0);
 
-    // Optional: Add debugging visuals
-    groundLayer.setCollisionByProperty({ collides: true });
-    console.log("Ground layer created!");
+    // Center the ground layer within the canvas
+    const offsetX = (config.width - map.widthInPixels) / 2;
+    const offsetY = (config.height - map.heightInPixels) / 2;
+    groundLayer.setPosition(offsetX, offsetY);
+
+    console.log("Ground layer created and centered!");
 }
 
 function update() {
