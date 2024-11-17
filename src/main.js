@@ -57,10 +57,36 @@ function create() {
     //     font: "16px Arial",
     //     fill: "#ffffff",
     // });
+
+    //Enable input
+    this.cursors = this.input.keyboard.createCursorKeys();
 }
 
 function update() {
     console.log("Updating...");
+
+    // Player Movement
+    // Config
+    const speed = 200;
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    // Horizontal Movement
+    if (this.cursors.left.isDown) {
+        this.player.body.setVelocityX(-speed);
+    } else if (this.cursors.right.isDown) {
+        this.player.body.setVelocityX(speed);
+    } else {
+        this.player.body.setVelocityX(0);
+    }
+
+    // Vertical Movement
+    if (this.cursors.up.isDown) {
+        this.player.body.setVelocityY(-speed);
+    } else if (this.cursors.down.isDown) {
+        this.player.body.setVelocityY(speed);
+    } else {
+        this.player.body.setVelocityY(0);
+    }
 }
 
 // Initialize the Phaser game instance
